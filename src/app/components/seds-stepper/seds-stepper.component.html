@@ -1,0 +1,13 @@
+<header>
+  <button cdkStepperPrevious>&larr;</button>
+  <ng-container *ngFor="let step of steps; let i = index">
+    <button [class.active]="selectedIndex === i" (click)="selectedIndex = i">
+      <mat-icon *ngIf="step.icon" [fontIcon]="step.icon"></mat-icon>
+      <span>{{ step.label }}</span>
+    </button>
+  </ng-container>
+  <button cdkStepperNext>&rarr;</button>
+</header>
+<div [style.display]="selected ? 'block' : 'none'">
+  <ng-container [ngTemplateOutlet]="selected?.content!"></ng-container>
+</div>
